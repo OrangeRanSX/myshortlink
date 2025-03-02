@@ -1,7 +1,9 @@
 package com.rsx.myshortlink.admin.controller;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.rsx.myshortlink.admin.common.convention.result.Result;
 import com.rsx.myshortlink.admin.common.convention.result.Results;
+import com.rsx.myshortlink.admin.dto.resp.UserActualRespDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserRespDTO;
 import com.rsx.myshortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +25,13 @@ public class UserController {
     @GetMapping("/api/short-link/v1/user/{username}")
     public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username) {
         return Results.success(userService.getUserByUsername(username));
+    }
+
+    /**
+     * 根据用户名查询用户实际信息(手机号未脱敏)
+     */
+    @GetMapping("/api/short-link/v1/actual/{username}")
+    public Result<UserActualRespDTO> getActualUserByUsername(@PathVariable("username") String username) {
+        return Results.success(BeanUtil.toBean(userService.getUserByUsername(username), UserActualRespDTO.class));
     }
 }

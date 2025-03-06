@@ -4,6 +4,7 @@ import cn.hutool.core.bean.BeanUtil;
 import com.rsx.myshortlink.admin.common.convention.result.Result;
 import com.rsx.myshortlink.admin.common.convention.result.Results;
 import com.rsx.myshortlink.admin.dto.req.UserRegisterReqDTO;
+import com.rsx.myshortlink.admin.dto.req.UserUpdateReqDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserActualRespDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserRespDTO;
 import com.rsx.myshortlink.admin.service.UserService;
@@ -48,6 +49,15 @@ public class UserController {
     @PostMapping("/api/short-link/v1/user")
     public Result<Void> register(@RequestBody UserRegisterReqDTO requestParam) {
         userService.register(requestParam);
+        return Results.success();
+    }
+
+    /**
+     * 修改用户
+     */
+    @PutMapping("/api/short-link/v1/user")
+    public Result<Void> update(@RequestBody UserUpdateReqDTO requestParam) {
+        userService.update(requestParam);
         return Results.success();
     }
 }

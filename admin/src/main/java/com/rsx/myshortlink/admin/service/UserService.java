@@ -3,6 +3,7 @@ package com.rsx.myshortlink.admin.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.rsx.myshortlink.admin.dao.entity.UserDO;
 import com.rsx.myshortlink.admin.dto.req.UserRegisterReqDTO;
+import com.rsx.myshortlink.admin.dto.req.UserUpdateReqDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserRespDTO;
 
 /**
@@ -31,5 +32,12 @@ public interface UserService extends IService<UserDO> {
      * @param requestParam 注册用户请求参数
      */
     void register(UserRegisterReqDTO requestParam);
+
+    /**
+     * 根据用户名修改用户
+     *
+     * @param requestParam 修改用户请求参数
+     */
+    void update(UserUpdateReqDTO requestParam);
 
 }

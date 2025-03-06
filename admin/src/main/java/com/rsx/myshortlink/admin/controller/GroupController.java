@@ -3,6 +3,7 @@ package com.rsx.myshortlink.admin.controller;
 import com.rsx.myshortlink.admin.common.convention.result.Result;
 import com.rsx.myshortlink.admin.common.convention.result.Results;
 import com.rsx.myshortlink.admin.dto.req.ShortLinkGroupSaveReqDTO;
+import com.rsx.myshortlink.admin.dto.req.ShortLinkGroupSortReqDTO;
 import com.rsx.myshortlink.admin.dto.req.ShortLinkGroupUpdateReqDTO;
 import com.rsx.myshortlink.admin.dto.resp.ShortLinkGroupRespDTO;
 import com.rsx.myshortlink.admin.service.GroupService;
@@ -51,6 +52,16 @@ public class GroupController {
     @DeleteMapping("/api/short-link/v1/group")
     public Result<Void> updateGroup(@RequestParam String gid) {
         groupService.deleteGroup(gid);
+        return Results.success();
+    }
+
+
+    /**
+     * 删除短链接分组
+     */
+    @PostMapping("/api/short-link/v1/group/sort")
+    public Result<Void> sortGroup(@RequestBody List<ShortLinkGroupSortReqDTO> requestParam) {
+        groupService.sortGroup(requestParam);
         return Results.success();
     }
 }

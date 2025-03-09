@@ -1,11 +1,13 @@
 server:
   port: 8001
 
-
+# 根据dev还是prod切换mysql连接，
+# 默认dev
+# 需要prod的配置，可以虚拟机参数 -Ddatabase.env=prod
 spring:
   datasource:
     driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
-    url: jdbc:shardingsphere:classpath:shardingsphere-config.yaml
+    url: jdbc:shardingsphere:classpath:shardingsphere-config-${database.env:dev}.yaml
   data:
     redis:
       host: 127.0.0.1

@@ -16,6 +16,7 @@ import com.rsx.myshortlink.admin.dto.req.UserRegisterReqDTO;
 import com.rsx.myshortlink.admin.dto.req.UserUpdateReqDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserLoginRespDTO;
 import com.rsx.myshortlink.admin.dto.resp.UserRespDTO;
+import com.rsx.myshortlink.admin.service.GroupService;
 import com.rsx.myshortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.redisson.api.RBloomFilter;
@@ -42,6 +43,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
     private final RBloomFilter<String>userRegisterCachePenetrationBloomFilter;
     private final RedissonClient redissonClient;
     private final StringRedisTemplate stringRedisTemplate;
+    private final GroupService groupService;
 
     @Override
     public UserRespDTO getUserByUsername(String username) {
@@ -79,6 +81,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
                     throw new ClientException(USER_EXIST);
                 }
                 userRegisterCachePenetrationBloomFilter.add(requestParam.getUsername());
+                groupService.saveGroup("默认分组");
                 return;
             }
             throw new ClientException(USER_NAME_EXIST);

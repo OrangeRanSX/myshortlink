@@ -1,4 +1,4 @@
-package com.rsx.myshortlink.admin.remote.dto;
+package com.rsx.myshortlink.admin.remote;
 
 import cn.hutool.http.HttpUtil;
 import com.alibaba.fastjson2.JSON;

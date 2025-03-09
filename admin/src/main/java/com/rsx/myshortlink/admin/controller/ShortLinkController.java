@@ -2,7 +2,7 @@ package com.rsx.myshortlink.admin.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.rsx.myshortlink.admin.common.convention.result.Result;
-import com.rsx.myshortlink.admin.remote.dto.ShortLinkRemoteService;
+import com.rsx.myshortlink.admin.remote.ShortLinkRemoteService;
 import com.rsx.myshortlink.admin.remote.dto.req.ShortLinkCreateReqDTO;
 import com.rsx.myshortlink.admin.remote.dto.req.ShortLinkPageReqDTO;
 import com.rsx.myshortlink.admin.remote.dto.resp.ShortLinkCreateRespDTO;

@@ -6,6 +6,7 @@ import com.rsx.myshortlink.project.common.convention.result.Result;
 import com.rsx.myshortlink.project.common.convention.result.Results;
 import com.rsx.myshortlink.project.dto.req.ShortLinkCreateReqDTO;
 import com.rsx.myshortlink.project.dto.req.ShortLinkPageReqDTO;
+import com.rsx.myshortlink.project.dto.req.ShortLinkUpdateReqDTO;
 import com.rsx.myshortlink.project.dto.resp.ShortLinkCreateRespDTO;
 import com.rsx.myshortlink.project.dto.resp.ShortLinkGroupCountQueryRespDTO;
 import com.rsx.myshortlink.project.dto.resp.ShortLinkPageRespDTO;
@@ -30,6 +31,12 @@ public class ShortLinkController {
     @PostMapping("/api/short-link/v1/create")
     public Result<ShortLinkCreateRespDTO> createShortLink(@RequestBody ShortLinkCreateReqDTO requestParam) {
         return Results.success(shortLinkService.createShortLink(requestParam));
+    }
+
+    @PutMapping("/api/short-link/v1/update")
+    public Result<Void> updateShortLink(@RequestBody ShortLinkUpdateReqDTO requestParam) {
+        shortLinkService.updateShortLink(requestParam);
+        return Results.success();
     }
 
 
